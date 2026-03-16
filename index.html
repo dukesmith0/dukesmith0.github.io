@@ -81,7 +81,7 @@
         where I handled plumbing, HVAC, electrical, and IT systems with no supervision.
         Currently doing CFD trade studies and composite fabrication on Bruin Formula Racing,
         and building embedded flight instrumentation and simulation tools on the side.
-        Targeting flight test, systems engineering, and defense/space roles.
+        Targeting aerospace engineering, flight test, systems engineering, and defense/space roles.
       </p>
     </div>
   </section>
@@ -97,7 +97,7 @@
           Coursework: Thermodynamics, Statics, Dynamics, Fluid Mechanics, Differential Equations (MATLAB)
         </div>
         <div class="edu-affiliations">
-          Bruin Formula Racing (FSAE) &middot; AIAA &middot; Lambda Chi Alpha
+          Bruin Formula Racing (FSAE) &middot; AIAA &middot; Bruin AI Research Club &middot; Lambda Chi Alpha
         </div>
       </div>
     </div>
@@ -120,9 +120,9 @@
           </div>
           <div class="exp-desc">
             <ul>
-              <li>Achieved sub-90&deg;C coolant target by modeling radiator heat dissipation in Ansys thermal simulation, validated with hand calculations, then packaged cooling ducting within sidepod volume constraints across powertrain, chassis, and aero sub-teams</li>
-              <li>Fabricated 15+ carbon fiber aero components and CNC-machined aluminum and steel members, producing ASME Y14.5 drawings and BOMs for composite layup, machining, and 3D printing</li>
-              <li>Delivered aerodynamic components from concept through manufacturing, iterating SolidWorks geometry, running STAR-CCM+ simulations on the full-car template, and fabricating final carbon fiber parts on the shop floor</li>
+              <li>Verified composite aero component mounting loads in Ansys Mechanical by mapping CFD-derived pressure distributions onto structural models, confirming factor of safety for combined aerodynamic and inertial race loading conditions</li>
+              <li>Achieved sub-90&deg;C coolant target by modeling radiator heat dissipation using ANSYS simulation, validated with hand calculations, then packaged cooling ducting within sidepod volume constraints across powertrain, chassis, and aero sub-teams</li>
+              <li>Fabricated 15+ carbon fiber aero components (sidepods, endplates, nosecone, airfoils) and CNC machined aluminum and steel members, producing ASME Y14.5 drawings and BOMs for composite layup, machining, and 3D printing</li>
             </ul>
           </div>
         </div>
@@ -164,12 +164,12 @@
               <div class="exp-role">Mechanical Engineering Intern</div>
               <div class="exp-company">Monterey Peninsula College, Monterey, CA</div>
             </div>
-            <div class="exp-date">Jun 2024 &ndash; Sep 2024</div>
+            <div class="exp-date">Jun 2024 &ndash; Aug 2024</div>
           </div>
           <div class="exp-desc">
             <ul>
-              <li>Created a new robotics design challenge for the engineering curriculum, designing and fabricating a sub-$50 competition robot and test arena through 3 design-build-test iterations using SolidWorks, CNC milling, and microcontrollers</li>
-              <li>Authored assembly procedures, test protocols, and lessons-learned documentation adopted by the college for ongoing student design competitions</li>
+              <li>Created a new robotics design challenge for the engineering curriculum, designing and fabricating a manufacturable, sub-$50 competition robot and test arena through 3 design-build-test iterations using SolidWorks, CNC milling, and microcontrollers</li>
+              <li>Authored technical documentation (assembly, testing, derivations, figures) adopted by the college for engineering courses</li>
             </ul>
           </div>
         </div>
@@ -192,15 +192,16 @@
         <div class="exp-card fade-in">
           <div class="exp-header">
             <div>
-              <div class="exp-role">Maintenance Technician (Solo)</div>
+              <div class="exp-role">Maintenance Technician</div>
               <div class="exp-company">The Stevenson Monterey, Monterey, CA</div>
             </div>
             <div class="exp-date">Aug 2020 &ndash; Aug 2024</div>
           </div>
           <div class="exp-desc">
             <ul>
-              <li>Diagnosed and resolved 2&ndash;5 daily service requests across plumbing, HVAC, electrical, and IT systems as sole maintenance technician for a 51-room hotel over 4 years with no on-site supervision</li>
-              <li>Upgraded POS, reservation, and keycard systems across the hotel, cutting average check-in wait time from 10 to 5 minutes and eliminating manual key management</li>
+              <li>Diagnosed and resolved 2&ndash;5 daily service requests across plumbing, HVAC, electrical, structural, and IT systems as sole maintenance technician for a 51-room hotel over 4 years with no on-site engineering supervision</li>
+              <li>Upgraded POS, reservation, IT, and keycard systems across the hotel, cutting average customer check-in wait time from 10 to 5 minutes, eliminating manual key management for front desk staff, and creating redundant on-site and cloud backups</li>
+              <li>Prevented major property damage during an underground garage flood by identifying rising water levels after hours and physically activating flooded bilge pump systems before water damaged electrical infrastructure, guest vehicles, and elevator</li>
             </ul>
           </div>
         </div>
@@ -230,11 +231,12 @@
               <span>Monte Carlo</span>
             </div>
             <p class="project-summary">
-              Full 6-DOF rigid body flight simulator with quaternion-based equations of motion,
-              stability-derivative aero model, and 7-loop cascaded PID autopilot.
-              Trim validated within 1% of hand calculations. All 5 classical flight modes
-              identified via eigenvalue analysis. 100-run Monte Carlo gust sensitivity,
-              multi-waypoint guidance, and interactive 3D animation.
+              6-DOF rigid body flight dynamics simulator in MATLAB with quaternion-based equations of motion
+              and stability-derivative aero models. Trim validated within 1% of hand calculations.
+              7-loop cascaded PID autopilot achieving &lt;0.01 m altitude error and 0.03&deg; heading error.
+              All 5 classical flight modes identified via eigenvalue analysis. Monte Carlo wind-gust
+              sensitivity analysis. 20 formal unit tests and energy/momentum conservation checks
+              confirming &lt;0.1% drift.
             </p>
             <div class="project-links">
               <a href="https://github.com/dukesmith0/6dof-uav-sim" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
@@ -256,10 +258,11 @@
               <span>PyQt6</span>
             </div>
             <p class="project-summary">
-              2D transient finite-difference heat conduction solver achieving 2000x speedup
-              via per-cell adaptive CFL sub-stepping. 196 built-in materials from Incropera,
-              aerospace TPS scenarios (aerogel/alumina/titanium), 101-test regression suite,
-              and 6 versioned releases with cross-platform executables.
+              2D transient finite-difference thermal solver in Python achieving 2000x speedup
+              over global CFL stability bound via per-cell adaptive time-stepping with harmonic-mean
+              interface conductances. Aerospace TPS scenarios (aerogel/alumina/titanium under
+              200 W/m&sup2; heat flux) with Dirichlet and Neumann boundary conditions. Validated with
+              per-frame energy conservation across 196 Incropera materials.
             </p>
             <div class="project-links">
               <a href="https://github.com/dukesmith0/pytherm" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
@@ -275,16 +278,17 @@
             <h3 class="project-title">Flight Data Recorder + Visualizer</h3>
             <div class="project-tags">
               <span>RP2040</span>
-              <span>Embedded C</span>
+              <span>Embedded C++</span>
               <span>IMU/GPS</span>
               <span>Mahony AHRS</span>
               <span>Streamlit</span>
             </div>
             <p class="project-summary">
-              Dual-core data acquisition system: Core 0 handles 100 Hz fault-tolerant SD logging,
-              Core 1 runs 200 Hz Mahony AHRS sensor fusion. Custom signal processing pipeline
-              with GPS quality rejection and complementary altitude filtering.
-              $113 BOM, 3D-printed enclosure, and a web-based 3D trajectory visualizer.
+              Dual-core RP2040 data acquisition system for FSAE CFD validation, integrating IMU, GPS,
+              and barometric instrumentation with Mahony AHRS sensor fusion at 200 Hz and $113 total BOM.
+              Custom signal processing pipeline with GPS quality rejection, complementary altitude filtering,
+              and automated calibration. Web-based 3D trajectory visualizer with dead reckoning for
+              GPS-denied intervals; adopted by a collaborator for AI-based activity classification.
             </p>
             <div class="project-links">
               <a href="https://github.com/dukesmith0/rp2040-black-box" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
@@ -304,9 +308,9 @@
       <h2 class="section-title">What I work with</h2>
       <div class="skills-grid fade-in">
         <div class="skill-group">
-          <h3>Simulation &amp; CAD</h3>
+          <h3>Simulation</h3>
           <ul>
-            <li>MATLAB / Simulink</li>
+            <li>MATLAB</li>
             <li>STAR-CCM+ (CFD)</li>
             <li>Ansys Mechanical (FEA)</li>
             <li>Thermal Analysis (FDM)</li>
@@ -315,23 +319,24 @@
           </ul>
         </div>
         <div class="skill-group">
-          <h3>Fabrication</h3>
+          <h3>Manufacturing</h3>
           <ul>
             <li>CNC Machining (Mill, Lathe)</li>
-            <li>Composite Layup (Carbon Fiber)</li>
+            <li>Composite Layup (Wet, Dry Carbon Fiber)</li>
             <li>3D Printing</li>
             <li>Soldering</li>
             <li>Laser Cutting</li>
-            <li>ASME Y14.5 (GD&T)</li>
+            <li>Power Tools</li>
+            <li>Riveting</li>
+            <li>Wiring Diagrams</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Programming</h3>
           <ul>
-            <li>Python (NumPy, SciPy, pandas)</li>
+            <li>Python (NumPy, SciPy, pandas, Streamlit)</li>
             <li>C++ (STL, Eigen)</li>
-            <li>MATLAB</li>
-            <li>Git / GitHub</li>
+            <li>Git</li>
             <li>Linux</li>
             <li>Arduino</li>
           </ul>
@@ -339,11 +344,11 @@
         <div class="skill-group">
           <h3>Methods</h3>
           <ul>
-            <li>Trade Studies</li>
             <li>Root Cause Analysis</li>
-            <li>Data Acquisition</li>
+            <li>Trade Studies</li>
             <li>Verification &amp; Validation</li>
-            <li>Test Planning</li>
+            <li>Data Acquisition</li>
+            <li>ASME Y14.5 (GD&amp;T)</li>
           </ul>
         </div>
       </div>
@@ -365,7 +370,7 @@
   <footer id="contact">
     <div class="container">
       <div class="footer-name">Craig "Duke" Smith</div>
-      <div class="footer-tagline">Aerospace Engineering + Data Science | UCLA 2028</div>
+      <div class="footer-tagline">Aerospace Engineering + Data Science | UCLA</div>
       <div class="footer-links">
         <a href="mailto:craigdukesmith@gmail.com">craigdukesmith@gmail.com</a>
         <a href="https://linkedin.com/in/duke-smith/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
