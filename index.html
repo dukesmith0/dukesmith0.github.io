@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Craig "Duke" Smith | Aerospace Engineer</title>
   <meta name="description" content="Craig 'Duke' Smith — Aerospace Engineering student at UCLA. Portfolio of CFD, embedded systems, flight simulation, and hands-on engineering projects.">
+  <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +14,7 @@
     var t = localStorage.getItem('theme');
     if (t) document.documentElement.setAttribute('data-theme', t);
   </script>
+  <noscript><style>.fade-in{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
@@ -44,8 +46,9 @@
           <div class="hero-eyebrow">Aerospace Engineering + Data Science</div>
           <h1 class="hero-name">Craig <span class="accent">"Duke"</span> Smith</h1>
           <p class="hero-sub">
-            Aerospace engineering student at UCLA. I build things that fly, compute, and measure.
-            Hands-on background in CFD, embedded systems, flight data, and building maintenance.
+            Aerospace engineering student at UCLA. I build things that move, compute, and measure.
+            Hands-on background in CFD, CAD, FEA, embedded systems, flight data, programming, and maintenance.
+            Seeking internship opportunities.
           </p>
           <div class="hero-links">
             <a href="mailto:craigdukesmith@gmail.com">
@@ -97,7 +100,7 @@
           Coursework: Thermodynamics, Statics, Dynamics, Fluid Mechanics, Differential Equations (MATLAB)
         </div>
         <div class="edu-affiliations">
-          Bruin Formula Racing (FSAE) &middot; AIAA &middot; Bruin AI Research Club &middot; Lambda Chi Alpha
+          Bruin Formula Racing (FSAE) &middot; AIAA &middot; Lambda Chi Alpha
         </div>
       </div>
     </div>
@@ -120,8 +123,8 @@
           </div>
           <div class="exp-desc">
             <ul>
-              <li>Verified composite aero component mounting loads in Ansys Mechanical by mapping CFD-derived pressure distributions onto structural models, confirming factor of safety for combined aerodynamic and inertial race loading conditions</li>
-              <li>Achieved sub-90&deg;C coolant target by modeling radiator heat dissipation using ANSYS simulation, validated with hand calculations, then packaged cooling ducting within sidepod volume constraints across powertrain, chassis, and aero sub-teams</li>
+              <li>Confirmed structural factor of safety for composite aero mounts by mapping CFD-derived pressure distributions onto Ansys Mechanical FEA models under combined aerodynamic and inertial race loading</li>
+              <li>Met sub-90&deg;C coolant target by modeling radiator heat dissipation in ANSYS, validated with hand calculations, then packaged cooling ducting within sidepod constraints across powertrain, chassis, and aero sub-teams</li>
               <li>Fabricated 15+ carbon fiber aero components (sidepods, endplates, nosecone, airfoils) and CNC machined aluminum and steel members, producing ASME Y14.5 drawings and BOMs for composite layup, machining, and 3D printing</li>
             </ul>
           </div>
@@ -177,7 +180,7 @@
         <div class="exp-card fade-in">
           <div class="exp-header">
             <div>
-              <div class="exp-role">Recording and Photography Studio Designer</div>
+              <div class="exp-role">Professional Studio Designer</div>
               <div class="exp-company">Self-Employed, Carmel, CA</div>
             </div>
             <div class="exp-date">Jan 2024 &ndash; Sep 2024</div>
@@ -199,9 +202,9 @@
           </div>
           <div class="exp-desc">
             <ul>
+              <li>Prevented major property damage during an underground garage flood by identifying rising water levels after hours and physically activating flooded bilge pump systems before water damaged electrical infrastructure, guest vehicles, and elevator</li>
               <li>Diagnosed and resolved 2&ndash;5 daily service requests across plumbing, HVAC, electrical, structural, and IT systems as sole maintenance technician for a 51-room hotel over 4 years with no on-site engineering supervision</li>
               <li>Upgraded POS, reservation, IT, and keycard systems across the hotel, cutting average customer check-in wait time from 10 to 5 minutes, eliminating manual key management for front desk staff, and creating redundant on-site and cloud backups</li>
-              <li>Prevented major property damage during an underground garage flood by identifying rising water levels after hours and physically activating flooded bilge pump systems before water damaged electrical infrastructure, guest vehicles, and elevator</li>
             </ul>
           </div>
         </div>
@@ -219,7 +222,7 @@
 
         <div class="project-card fade-in">
           <div class="project-img">
-            <img src="images/6dof-sim.png" alt="6-DOF UAV Flight Simulator">
+            <img src="images/6dof-sim.png" alt="6-DOF UAV Flight Simulator" loading="lazy">
           </div>
           <div class="project-info">
             <h3 class="project-title">6-DOF UAV Flight Simulator</h3>
@@ -246,7 +249,7 @@
 
         <div class="project-card fade-in">
           <div class="project-img">
-            <img src="images/pytherm.png" alt="PyTherm">
+            <img src="images/pytherm.png" alt="PyTherm" loading="lazy">
           </div>
           <div class="project-info">
             <h3 class="project-title">PyTherm</h3>
@@ -263,6 +266,7 @@
               interface conductances. Aerospace TPS scenarios (aerogel/alumina/titanium under
               200 W/m&sup2; heat flux) with Dirichlet and Neumann boundary conditions. Validated with
               per-frame energy conservation across 196 Incropera materials.
+              Grid independence verified across multiple resolutions with &lt;1% deviation.
             </p>
             <div class="project-links">
               <a href="https://github.com/dukesmith0/pytherm" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
@@ -272,7 +276,7 @@
 
         <div class="project-card fade-in">
           <div class="project-img">
-            <img src="images/flight-logger.jpeg" alt="Flight Data Recorder + Visualizer">
+            <img src="images/flight-logger.jpeg" alt="Flight Data Recorder + Visualizer" loading="lazy">
           </div>
           <div class="project-info">
             <h3 class="project-title">Flight Data Recorder + Visualizer</h3>
@@ -286,6 +290,7 @@
             <p class="project-summary">
               Dual-core RP2040 data acquisition system for FSAE CFD validation, integrating IMU, GPS,
               and barometric instrumentation with Mahony AHRS sensor fusion at 200 Hz and $113 total BOM.
+              Selected Mahony over extended Kalman filter due to RP2040 compute constraints at 200 Hz update rate.
               Custom signal processing pipeline with GPS quality rejection, complementary altitude filtering,
               and automated calibration. Web-based 3D trajectory visualizer with dead reckoning for
               GPS-denied intervals; adopted by a collaborator for AI-based activity classification.
