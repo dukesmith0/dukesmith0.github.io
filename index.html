@@ -6,6 +6,7 @@
   <title>Craig "Duke" Smith | Aerospace Engineer</title>
   <meta name="description" content="Craig 'Duke' Smith — Aerospace Engineering student at UCLA. Portfolio of CFD, embedded systems, flight simulation, and hands-on engineering projects.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.craigdukesmith.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,9 +25,10 @@
       <a href="#hero" class="nav-name">Craig "Duke" Smith</a>
       <div class="nav-right">
         <div class="nav-links">
-          <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="tools/pid-tuner.html">Tools</a>
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
           <div class="knob">
@@ -43,12 +45,12 @@
     <div class="container">
       <div class="hero-layout">
         <div class="hero-text">
-          <div class="hero-eyebrow">Aerospace Engineering + Data Science</div>
+          <div class="hero-eyebrow">Aerospace Engineering + Data Science | UCLA &rsquo;28</div>
           <h1 class="hero-name">Craig <span class="accent">"Duke"</span> Smith</h1>
           <p class="hero-sub">
-            Aerospace engineering student at UCLA. I build things that move, compute, and measure.
-            Hands-on background in CFD, CAD, FEA, embedded systems, flight data, programming, and maintenance.
-            Seeking internship opportunities.
+            Flight dynamics simulation, embedded instrumentation, and composite aero fabrication.
+            4+ years of hands-on diagnostics across mechanical, electrical, and fluid systems.
+            Targeting aerospace, flight test, GNC, and systems engineering roles.
           </p>
           <div class="hero-links">
             <a href="mailto:craigdukesmith@gmail.com">
@@ -63,12 +65,11 @@
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
-
           </div>
-          <div class="hero-meta">U.S. Citizen &middot; Eligible for Security Clearance</div>
+          <div class="hero-meta-prominent">U.S. Citizen &middot; Eligible for Security Clearance</div>
         </div>
         <div class="hero-photo">
-          <img src="images/headshot.png" alt="Craig Smith">
+          <img src="images/headshot.png" alt="Craig Duke Smith">
         </div>
       </div>
     </div>
@@ -78,14 +79,17 @@
   <section id="about">
     <div class="container">
       <div class="section-label">About</div>
-      <p class="about-text fade-in">
-        Second-year Aerospace Engineering student at UCLA with a Data Science minor.
-        I have been building and fixing things since I was 14, starting as sole maintenance technician at a 51-room hotel
-        where I handled plumbing, HVAC, electrical, and IT systems with no supervision.
-        Currently doing CFD trade studies and composite fabrication on Bruin Formula Racing,
-        and building embedded flight instrumentation and simulation tools on the side.
-        Targeting aerospace engineering, flight test, systems engineering, and defense/space roles.
-      </p>
+      <div class="about-layout fade-in">
+        <p class="about-text">
+          Four years of unsupervised field troubleshooting across plumbing, HVAC, electrical, and structural systems
+          taught me that real systems fail in ways textbooks don't predict. I bring that diagnostic instinct to every
+          simulation I build and every design I validate. Currently running CFD trade studies and fabricating composite
+          aero components on Bruin Formula Racing while building flight instrumentation and dynamics tools independently.
+        </p>
+        <div class="about-photo">
+          <img src="images/young1.png" alt="Craig working on an engineering project as a kid" loading="lazy" data-lightbox tabindex="0" role="button" aria-label="Enlarge image">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -95,12 +99,168 @@
       <div class="edu-card fade-in">
         <div class="edu-school">University of California, Los Angeles</div>
         <div class="edu-detail">B.S. Aerospace Engineering | Minor: Data Science Engineering</div>
-        <div class="edu-detail">GPA: 3.76 | Sep 2024 - Present</div>
+        <div class="edu-detail">GPA: 3.76 | Expected June 2028</div>
         <div class="edu-detail edu-coursework">
-          Coursework: Thermodynamics, Statics, Dynamics, Fluid Mechanics, Differential Equations (MATLAB)
+          Coursework: Linear Algebra, Dynamics, Fluid Mechanics, Thermodynamics, Differential Equations (MATLAB)
         </div>
         <div class="edu-affiliations">
           Bruin Formula Racing (FSAE) &middot; AIAA &middot; Lambda Chi Alpha
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Selected work</h2>
+      <div class="project-list">
+
+        <div class="project-card fade-in">
+          <div class="project-img">
+            <img src="images/6dof-sim.png" alt="6-DOF UAV Flight Simulator" loading="lazy" data-lightbox tabindex="0" role="button" aria-label="Enlarge image">
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">6-DOF UAV Flight Simulator</h3>
+            <div class="project-tags">
+              <span>MATLAB</span>
+              <span>Simulink</span>
+              <span>Flight Dynamics</span>
+              <span>Quaternion EOM</span>
+              <span>PID Autopilot</span>
+              <span>Monte Carlo</span>
+            </div>
+            <p class="project-summary">
+              Achieved &lt;0.01 m altitude error and 0.03&deg; heading error with a 7-loop cascaded PID autopilot
+              on a full 6-DOF rigid-body flight simulator. Quaternion-based EOM avoid gimbal lock at high alpha;
+              stability derivatives scaled from Nelson textbook data with RK4 integration. Trim validated within
+              1% of hand calculations. All 5 classical flight modes (short period, phugoid, dutch roll, roll
+              subsidence, spiral) identified via eigenvalue analysis of the linearized plant. Autopilot robustness
+              characterized through 100-run Monte Carlo gust sensitivity across 3 Dryden turbulence levels.
+              Verified with 20 formal unit tests and energy/momentum conservation checks confirming &lt;0.1% drift.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/dukesmith0/6dof-uav-sim" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-img">
+            <img src="images/pytherm.png" alt="PyTherm" loading="lazy" data-lightbox tabindex="0" role="button" aria-label="Enlarge image">
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">PyTherm</h3>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>NumPy</span>
+              <span>Heat Transfer</span>
+              <span>FDM</span>
+              <span>PyQt6</span>
+            </div>
+            <p class="project-summary">
+              2,000x speedup over global CFL stability bound on mixed-material grids via per-cell adaptive
+              time-stepping with harmonic-mean interface conductances. Enables real-time parameter sweeps
+              that were previously overnight batch jobs. Modeled aerospace TPS scenarios (aerogel/alumina/titanium
+              under 200 W/m&sup2; heat flux) with Dirichlet and Neumann boundary conditions. Validated with
+              per-frame energy conservation across 196 Incropera materials and grid independence verified
+              across multiple resolutions with &lt;1% deviation. Shipped 6 versioned releases with a 101-test
+              regression suite and cross-platform executables.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/dukesmith0/pytherm" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-img">
+            <img src="images/flight-logger.jpeg" alt="Flight Test Instrumentation Package" loading="lazy" data-lightbox tabindex="0" role="button" aria-label="Enlarge image">
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Flight Test Instrumentation Package</h3>
+            <div class="project-tags">
+              <span>RP2040</span>
+              <span>Embedded C++</span>
+              <span>Sensor Fusion</span>
+              <span>Mahony AHRS</span>
+              <span>Streamlit</span>
+            </div>
+            <p class="project-summary">
+              Mahony AHRS attitude estimator fusing 6-axis IMU data at 200 Hz on a dual-core RP2040,
+              selected over extended Kalman filter due to Cortex-M0+ compute constraints at target update rate.
+              GPS-disciplined timestamps with quality-based fix rejection for data conditioning. Complementary
+              altitude filtering and automated magnetometer/accelerometer calibration. Dead-reckoning navigation
+              propagates position through GPS-denied intervals. $113 BOM flight test instrumentation package
+              built for FSAE CFD validation with 100 Hz fault-tolerant SD logging. Web-based 3D trajectory
+              visualizer adopted by a collaborator for AI-based activity classification.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/dukesmith0/rp2040-black-box" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://rp2040-fdr-visualizer.streamlit.app" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">Skills &amp; Tools</div>
+      <h2 class="section-title">What I work with</h2>
+      <div class="skills-grid fade-in">
+        <div class="skill-group">
+          <h3>Simulation &amp; CAD</h3>
+          <ul>
+            <li>MATLAB / Simulink</li>
+            <li>STAR-CCM+ (CFD)</li>
+            <li>Ansys Mechanical (FEA)</li>
+            <li>Thermal Analysis (FDM)</li>
+            <li>SolidWorks</li>
+            <li>Fusion 360</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Manufacturing</h3>
+          <ul>
+            <li>CNC Machining (Mill, Lathe)</li>
+            <li>Composite Layup (Wet, Dry Carbon Fiber)</li>
+            <li>3D Printing</li>
+            <li>Soldering</li>
+            <li>Laser Cutting</li>
+            <li>Power Tools</li>
+            <li>Riveting</li>
+            <li>Wiring Diagrams</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <ul>
+            <li>Python (NumPy, SciPy, pandas, Streamlit)</li>
+            <li>C++ (STL, Eigen)</li>
+            <li>Git</li>
+            <li>Linux</li>
+            <li>Arduino</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Methods</h3>
+          <ul>
+            <li>Trade Studies</li>
+            <li>Verification &amp; Validation</li>
+            <li>Root Cause Analysis</li>
+            <li>Failure Mode Analysis</li>
+            <li>Requirements Decomposition</li>
+            <li>Test Matrix Development</li>
+            <li>Configuration Management</li>
+            <li>Sensor Fusion (Mahony / EKF)</li>
+            <li>Data Acquisition &amp; Conditioning</li>
+            <li>ASME Y14.5 (GD&amp;T)</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -124,7 +284,7 @@
           <div class="exp-desc">
             <ul>
               <li>Confirmed structural factor of safety for composite aero mounts by mapping CFD-derived pressure distributions onto Ansys Mechanical FEA models under combined aerodynamic and inertial race loading</li>
-              <li>Met sub-90&deg;C coolant target by modeling radiator heat dissipation in ANSYS, validated with hand calculations, then packaged cooling ducting within sidepod constraints across powertrain, chassis, and aero sub-teams</li>
+              <li>Led cross-subsystem thermal integration of cooling system, defining interface constraints between powertrain, chassis, and aero sub-teams; validated radiator sizing via ANSYS thermal model correlated with hand calculations to meet sub-90&deg;C coolant requirement</li>
               <li>Fabricated 15+ carbon fiber aero components (sidepods, endplates, nosecone, airfoils) and CNC machined aluminum and steel members, producing ASME Y14.5 drawings and BOMs for composite layup, machining, and 3D printing</li>
             </ul>
           </div>
@@ -203,8 +363,7 @@
           <div class="exp-desc">
             <ul>
               <li>Prevented major property damage during an underground garage flood by identifying rising water levels after hours and physically activating flooded bilge pump systems before water damaged electrical infrastructure, guest vehicles, and elevator</li>
-              <li>Diagnosed and resolved 2&ndash;5 daily service requests across plumbing, HVAC, electrical, structural, and IT systems as sole maintenance technician for a 51-room hotel over 4 years with no on-site engineering supervision</li>
-              <li>Upgraded POS, reservation, IT, and keycard systems across the hotel, cutting average customer check-in wait time from 10 to 5 minutes, eliminating manual key management for front desk staff, and creating redundant on-site and cloud backups</li>
+              <li>Diagnosed and resolved 2&ndash;5 daily service requests across plumbing, HVAC, electrical, and structural systems as sole maintenance technician for a 51-room hotel over 4 years with no on-site engineering supervision</li>
             </ul>
           </div>
         </div>
@@ -213,169 +372,31 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
+  <!-- INTERESTS -->
+  <section id="interests">
     <div class="container">
-      <div class="section-label">Projects</div>
-      <h2 class="section-title">Selected work</h2>
-      <div class="project-list">
-
-        <div class="project-card fade-in">
-          <div class="project-img">
-            <img src="images/6dof-sim.png" alt="6-DOF UAV Flight Simulator" loading="lazy">
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">6-DOF UAV Flight Simulator</h3>
-            <div class="project-tags">
-              <span>MATLAB</span>
-              <span>Flight Dynamics</span>
-              <span>Quaternion EOM</span>
-              <span>PID Autopilot</span>
-              <span>Monte Carlo</span>
-            </div>
-            <p class="project-summary">
-              6-DOF rigid body flight dynamics simulator in MATLAB with quaternion-based equations of motion
-              and stability-derivative aero models. Trim validated within 1% of hand calculations.
-              7-loop cascaded PID autopilot achieving &lt;0.01 m altitude error and 0.03&deg; heading error.
-              All 5 classical flight modes identified via eigenvalue analysis. Monte Carlo wind-gust
-              sensitivity analysis. 20 formal unit tests and energy/momentum conservation checks
-              confirming &lt;0.1% drift.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/dukesmith0/6dof-uav-sim" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-img">
-            <img src="images/pytherm.png" alt="PyTherm" loading="lazy">
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">PyTherm</h3>
-            <div class="project-tags">
-              <span>Python</span>
-              <span>NumPy</span>
-              <span>Heat Transfer</span>
-              <span>FDM</span>
-              <span>PyQt6</span>
-            </div>
-            <p class="project-summary">
-              2D transient finite-difference thermal solver in Python achieving 2000x speedup
-              over global CFL stability bound via per-cell adaptive time-stepping with harmonic-mean
-              interface conductances. Aerospace TPS scenarios (aerogel/alumina/titanium under
-              200 W/m&sup2; heat flux) with Dirichlet and Neumann boundary conditions. Validated with
-              per-frame energy conservation across 196 Incropera materials.
-              Grid independence verified across multiple resolutions with &lt;1% deviation.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/dukesmith0/pytherm" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-img">
-            <img src="images/flight-logger.jpeg" alt="Flight Data Recorder + Visualizer" loading="lazy">
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Flight Data Recorder + Visualizer</h3>
-            <div class="project-tags">
-              <span>RP2040</span>
-              <span>Embedded C++</span>
-              <span>IMU/GPS</span>
-              <span>Mahony AHRS</span>
-              <span>Streamlit</span>
-            </div>
-            <p class="project-summary">
-              Dual-core RP2040 data acquisition system for FSAE CFD validation, integrating IMU, GPS,
-              and barometric instrumentation with Mahony AHRS sensor fusion at 200 Hz and $113 total BOM.
-              Selected Mahony over extended Kalman filter due to RP2040 compute constraints at 200 Hz update rate.
-              Custom signal processing pipeline with GPS quality rejection, complementary altitude filtering,
-              and automated calibration. Web-based 3D trajectory visualizer with dead reckoning for
-              GPS-denied intervals; adopted by a collaborator for AI-based activity classification.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/dukesmith0/rp2040-black-box" class="project-link" target="_blank" rel="noopener noreferrer">GitHub </a>
-              <a href="https://rp2040-fdr-visualizer.streamlit.app" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo </a>
-            </div>
-          </div>
-        </div>
-
+      <div class="section-label">Interests</div>
+      <div class="interests-row fade-in">
+        <span>Kerbal Space Program</span>
+        <span>Off-roading</span>
+        <span>Vintage Cars</span>
+        <span>Furniture Making</span>
+        <span>Football Coaching</span>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-label">Skills &amp; Tools</div>
-      <h2 class="section-title">What I work with</h2>
-      <div class="skills-grid fade-in">
-        <div class="skill-group">
-          <h3>Simulation</h3>
-          <ul>
-            <li>MATLAB</li>
-            <li>STAR-CCM+ (CFD)</li>
-            <li>Ansys Mechanical (FEA)</li>
-            <li>Thermal Analysis (FDM)</li>
-            <li>SolidWorks</li>
-            <li>Fusion 360</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Manufacturing</h3>
-          <ul>
-            <li>CNC Machining (Mill, Lathe)</li>
-            <li>Composite Layup (Wet, Dry Carbon Fiber)</li>
-            <li>3D Printing</li>
-            <li>Soldering</li>
-            <li>Laser Cutting</li>
-            <li>Power Tools</li>
-            <li>Riveting</li>
-            <li>Wiring Diagrams</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Programming</h3>
-          <ul>
-            <li>Python (NumPy, SciPy, pandas, Streamlit)</li>
-            <li>C++ (STL, Eigen)</li>
-            <li>Git</li>
-            <li>Linux</li>
-            <li>Arduino</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Methods</h3>
-          <ul>
-            <li>Root Cause Analysis</li>
-            <li>Trade Studies</li>
-            <li>Verification &amp; Validation</li>
-            <li>Data Acquisition</li>
-            <li>ASME Y14.5 (GD&amp;T)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="interests-section fade-in">
-        <div class="section-label">Interests</div>
-        <div class="interests-row">
-          <span>Kerbal Space Program</span>
-          <span>Off-roading</span>
-          <span>Vintage Cars</span>
-          <span>Furniture Making</span>
-          <span>Football Coaching</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Enlarged image view">
+    <button id="lightboxClose" class="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightboxImg" alt="">
+  </div>
 
   <!-- FOOTER -->
   <footer id="contact">
     <div class="container">
       <div class="footer-name">Craig "Duke" Smith</div>
-      <div class="footer-tagline">Aerospace Engineering + Data Science | UCLA</div>
+      <div class="footer-tagline">Aerospace Engineering + Data Science | UCLA &rsquo;28</div>
       <div class="footer-links">
         <a href="mailto:craigdukesmith@gmail.com">craigdukesmith@gmail.com</a>
         <a href="https://linkedin.com/in/duke-smith/" target="_blank" rel="noopener noreferrer">LinkedIn</a>

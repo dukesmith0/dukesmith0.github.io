@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive PID Tuner | Craig "Duke" Smith</title>
+  <meta name="description" content="Interactive PID controller tuner with Ziegler-Nichols and Lambda tuning, adjustable plant dynamics, noise injection, and real-time visualization.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="pid-tuner.css">
+  <script>
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  </script>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-name">Craig "Duke" Smith</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="pid-tuner.html">Tools</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <div class="knob">
+            <span class="icon icon-moon">&#9790;</span>
+            <span class="icon icon-sun">&#9788;</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pid-page">
+    <div class="pid-header">
+      <div class="section-label">Interactive Tool</div>
+      <h1 class="section-title">PID Controller Tuner</h1>
+      <p class="pid-subtitle">Tune a PID controller on a second-order plant. Adjust gains manually or auto-tune with Ziegler-Nichols and Lambda methods.</p>
+    </div>
+
+    <div class="pid-layout">
+      <!-- LEFT PANEL: Controls -->
+      <div class="pid-controls">
+
+        <!-- Reference Signal -->
+        <div class="control-section">
+          <h3 class="control-heading">Reference Signal</h3>
+          <div class="control-row">
+            <label for="refMode">Mode</label>
+            <select id="refMode">
+              <option value="single">Single Function</option>
+              <option value="piecewise">Piecewise Function</option>
+            </select>
+          </div>
+
+          <div id="singleRefGroup">
+            <div class="control-row">
+              <label for="refInput">r(t) =</label>
+              <input type="text" id="refInput" value="5" spellcheck="false" autocomplete="off">
+            </div>
+            <div class="control-row">
+              <label>Duration</label>
+              <input type="number" id="tEnd" value="10" step="1" min="1" class="t-range-input">
+              <span class="t-range-unit">seconds</span>
+            </div>
+          </div>
+
+          <div id="piecewiseRefGroup" class="hidden">
+            <div id="piecewiseSegments"></div>
+            <button id="addSegmentBtn" class="btn-small">+ Add Segment</button>
+            <div id="piecewiseError" class="error-msg hidden"></div>
+          </div>
+
+          <div class="math-hint">
+            Available: <code>t</code>, <code>sin</code>, <code>cos</code>, <code>exp</code>, <code>abs</code>, <code>sqrt</code>, <code>pow(x,n)</code>, <code>step</code>, <code>pi</code>, <code>+ - * / ^</code>
+          </div>
+        </div>
+
+        <!-- PID Gains -->
+        <div class="control-section">
+          <h3 class="control-heading">PID Gains</h3>
+          <div class="gain-row">
+            <label>K<sub>p</sub></label>
+            <input type="range" id="kpSlider" min="0" max="50" step="0.1" value="1">
+            <input type="number" id="kpInput" value="1" step="0.1" min="0">
+          </div>
+          <div class="gain-row">
+            <label>K<sub>i</sub></label>
+            <input type="range" id="kiSlider" min="0" max="20" step="0.05" value="0">
+            <input type="number" id="kiInput" value="0" step="0.05" min="0">
+          </div>
+          <div class="gain-row">
+            <label>K<sub>d</sub></label>
+            <input type="range" id="kdSlider" min="0" max="20" step="0.05" value="0">
+            <input type="number" id="kdInput" value="0" step="0.05" min="0">
+          </div>
+          <button id="resetGainsBtn" class="btn-small">Reset Gains</button>
+        </div>
+
+        <!-- Auto-Tune -->
+        <div class="control-section">
+          <h3 class="control-heading">Auto-Tune</h3>
+          <div class="method-picker">
+            <button class="method-btn active" data-method="zn">Ziegler-Nichols</button>
+            <button class="method-btn" data-method="lambda">Lambda (&lambda;)</button>
+          </div>
+          <div id="znOptions" class="method-options">
+            <div class="method-desc">Finds the ultimate gain K<sub>u</sub> and period T<sub>u</sub> at the stability boundary, then applies classical Z-N PID formulas.</div>
+          </div>
+          <div id="lambdaOptions" class="method-options hidden">
+            <div class="method-desc">Analytically computes gains from the plant model. Lower &lambda; = faster response but more aggressive control.</div>
+            <div class="gain-row">
+              <label>&lambda;</label>
+              <input type="range" id="lambdaSlider" min="0.1" max="10" step="0.1" value="1">
+              <input type="number" id="lambdaInput" value="1" step="0.1" min="0.1">
+            </div>
+          </div>
+          <button id="applyTuneBtn" class="btn-apply">Apply</button>
+          <div id="optimizeStatus" class="status-msg hidden"></div>
+        </div>
+
+        <!-- Advanced: Plant & Noise -->
+        <details class="control-section advanced-section">
+          <summary class="control-heading advanced-toggle">Advanced Settings</summary>
+
+          <div class="advanced-group">
+            <h4 class="sub-heading">Plant (2nd Order)</h4>
+            <div class="gain-row">
+              <label>&omega;<sub>n</sub></label>
+              <input type="range" id="wnSlider" min="0.1" max="10" step="0.1" value="1">
+              <input type="number" id="wnInput" value="1" step="0.1" min="0.1">
+            </div>
+            <div class="gain-row">
+              <label>&zeta;</label>
+              <input type="range" id="zetaSlider" min="0" max="2" step="0.01" value="0.5">
+              <input type="number" id="zetaInput" value="0.5" step="0.01" min="0">
+            </div>
+            <div class="plant-eq">G(s) = &omega;<sub>n</sub>&sup2; / (s&sup2; + 2&zeta;&omega;<sub>n</sub>s + &omega;<sub>n</sub>&sup2;)</div>
+            <button id="resetPlantBtn" class="btn-small">Reset Plant</button>
+          </div>
+
+          <div class="advanced-group">
+            <h4 class="sub-heading">Noise</h4>
+            <div class="noise-row">
+              <label>
+                <input type="checkbox" id="measNoiseToggle"> Measurement
+              </label>
+              <input type="range" id="measNoiseAmp" min="0" max="5" step="0.1" value="0.5" disabled>
+              <span id="measNoiseVal" class="noise-val">0.5</span>
+            </div>
+            <div class="noise-row">
+              <label>
+                <input type="checkbox" id="procNoiseToggle"> Process
+              </label>
+              <input type="range" id="procNoiseAmp" min="0" max="5" step="0.1" value="0.5" disabled>
+              <span id="procNoiseVal" class="noise-val">0.5</span>
+            </div>
+            <button id="newNoiseBtn" class="btn-small">New Noise Seed</button>
+          </div>
+
+          <div class="advanced-group">
+            <h4 class="sub-heading">Cost Function</h4>
+            <div class="control-row">
+              <select id="costFn">
+                <option value="ISE">ISE — Integral Squared Error</option>
+                <option value="IAE">IAE — Integral Absolute Error</option>
+                <option value="ITAE" selected>ITAE — Integral Time-weighted Absolute Error</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- RIGHT PANEL: Plots -->
+      <div class="pid-plots">
+        <div class="plot-container">
+          <div class="plot-header">
+            <div class="plot-label">Response</div>
+            <div class="plot-legend" id="responseLegend"></div>
+          </div>
+          <canvas id="responsePlot"></canvas>
+        </div>
+        <div class="plot-container">
+          <div class="plot-header">
+            <div class="plot-label">Control Effort</div>
+          </div>
+          <canvas id="controlPlot"></canvas>
+        </div>
+        <div class="plot-container">
+          <div class="plot-header">
+            <div class="plot-label">P / I / D Components</div>
+            <div class="plot-legend" id="pidLegend"></div>
+          </div>
+          <canvas id="pidPlot"></canvas>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <button id="playPauseBtn" class="btn-play" aria-label="Play/Pause"><div class="play-icon"></div></button>
+          <button id="resetTimeBtn" class="btn-play" aria-label="Reset"><div class="reset-icon"></div></button>
+          <div class="timeline-track" id="timelineTrack">
+            <div class="timeline-fill" id="timelineFill"></div>
+            <div class="timeline-head" id="timelineHead"></div>
+          </div>
+          <span id="timeDisplay" class="time-display">0.00 / 10.00 s</span>
+        </div>
+
+        <!-- Metrics -->
+        <div class="metrics-panel">
+          <div class="metric">
+            <span class="metric-label">Overshoot</span>
+            <span class="metric-value" id="metricOvershoot">—</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Rise Time</span>
+            <span class="metric-value" id="metricRise">—</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Settling Time</span>
+            <span class="metric-value" id="metricSettle">—</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">SS Error</span>
+            <span class="metric-value" id="metricSSE">—</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Cost (<span id="costLabel">ITAE</span>)</span>
+            <span class="metric-value" id="metricCost">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-name">Craig "Duke" Smith</div>
+      <div class="footer-tagline">Aerospace Engineering + Data Science | UCLA &rsquo;28</div>
+      <div class="footer-links">
+        <a href="mailto:craigdukesmith@gmail.com">craigdukesmith@gmail.com</a>
+        <a href="https://linkedin.com/in/duke-smith/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/dukesmith0" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Craig Smith</div>
+    </div>
+  </footer>
+
+  <script src="pid-tuner.js"></script>
+</body>
+</html>
